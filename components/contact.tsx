@@ -1,4 +1,4 @@
-"use client"
+use client"
 
 import { useState } from "react"
 import { MapPin, Facebook, Instagram, Linkedin, Send, CheckCircle } from "lucide-react"
@@ -66,14 +66,18 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Service Area Map placeholder */}
-              <div className="rounded-xl overflow-hidden aspect-video bg-primary-foreground/10 border border-white/20">
-                <img
-                  src="/placeholder.svg?height=200&width=360"
-                  alt="Service area map placeholder"
-                  className="w-full h-full object-cover opacity-50"
-                />
-                <div className="sr-only">Map showing 72 Laura Drive, Quispamsis, NB, Canada, E2E 6B4</div>
+              {/* Service Area Map */}
+              <div className="rounded-xl overflow-hidden aspect-video border border-white/20">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.711833130932!2d-65.94273202353723!3d45.43859737107779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5331e8c4e40e45%3A0xc3b59306b98e169b!2s72%20Laura%20Dr%2C%20Quispamsis%2C%20NB%20E2E%206B4%2C%20Canada!5e0!3m2!1sen!2sus!4v1709923420454!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Map showing 72 Laura Drive, Quispamsis, NB, Canada, E2E 6B4"
+                ></iframe>
               </div>
 
               {/* Social links */}
