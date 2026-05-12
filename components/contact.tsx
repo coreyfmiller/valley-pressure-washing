@@ -61,8 +61,8 @@ export default function Contact() {
                 <MapPin className="w-5 h-5 mt-0.5 text-sky-300 shrink-0" />
                 <div>
                   <p className="font-semibold text-sm">Location</p>
-                  <p className="text-white/70 text-sm mt-0.5">Quispamsis, New Brunswick</p>
-                  <p className="text-white/70 text-sm">Greater Saint John Area</p>
+                  <p className="text-white/70 text-sm mt-0.5">72 Laura Drive, Quispamsis, NB E2E 6B4</p>
+                  <p className="text-white/70 text-sm">Canada (Greater Saint John Area)</p>
                 </div>
               </div>
 
@@ -73,7 +73,7 @@ export default function Contact() {
                   alt="Service area map placeholder"
                   className="w-full h-full object-cover opacity-50"
                 />
-                <div className="sr-only">Map showing service area in Quispamsis and Greater Saint John, New Brunswick</div>
+                <div className="sr-only">Map showing 72 Laura Drive, Quispamsis, NB, Canada, E2E 6B4</div>
               </div>
 
               {/* Social links */}
