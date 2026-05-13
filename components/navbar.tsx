@@ -34,9 +34,9 @@ export default function Navbar() {
           <Image
             src="/logo.png"
             alt="Valley Pressure Washing logo"
-            width={140}
-            height={48}
-            className="h-10 w-auto object-contain"
+            width={560}
+            height={192}
+            className="h-[107px] w-auto object-contain"
             priority
           />
         </Link>

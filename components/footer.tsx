@@ -12,9 +12,9 @@ export default function Footer() {
             <Image
               src="/logo.png"
               alt="Valley Pressure Washing logo"
-              width={130}
-              height={44}
-              className="h-10 w-auto object-contain brightness-0 invert"
+              width={520}
+              height={176}
+              className="h-40 w-auto object-contain"
             />
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-xs">
               Professional pressure washing services in Quispamsis and the Greater Saint John area.
