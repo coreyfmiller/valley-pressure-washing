@@ -1,112 +1,95 @@
-import { Home, AppWindow, Building2, ArrowRight } from "lucide-react"
+import { Home, Droplets, Building2 } from 'lucide-react'
 
 const services = [
   {
     icon: Home,
-    title: "House Washing",
-    tagline: "Restore Your Home's Curb Appeal",
+    title: 'House Washing',
     description:
-      "Residential washing revitalizes homes with cutting-edge soft wash and pressure washing techniques. We safely remove mold, mildew, algae, and grime from siding, roofs, driveways, and decks — leaving your home looking brand new.",
-    features: ["Soft wash safe for all siding types", "Driveway & walkway cleaning", "Deck & patio restoration", "Roof washing"],
-    image: "/placeholder.svg?height=480&width=640",
-    imageAlt: "Clean suburban house after pressure washing",
+      'Residential washing revitalizes homes with cutting-edge techniques. We safely remove dirt, mold, mildew, and algae from your siding, roof, and exterior surfaces.',
+    features: ['Soft-wash technology', 'Eco-friendly solutions', 'Siding & roofs'],
+    image: 'https://primary.jwwb.nl/public/g/j/h/temp-ixeezrybfvaorktfpdiz/landry-high.jpg?enable-io=true&enable=upscale&crop=828%2C995%2Cx0%2Cy57%2Csafe&width=600&height=720',
   },
   {
-    icon: AppWindow,
-    title: "Window Washing",
-    tagline: "Crystal Clear Every Time",
+    icon: Droplets,
+    title: 'Window Washing',
     description:
-      "Our professional window cleaning brings back your shine and allows you to appreciate the beauty of the outdoors. From ground-level panes to multi-storey windows, we deliver streak-free results every time.",
-    features: ["Streak-free finish", "Interior & exterior cleaning", "Screen cleaning included", "All window types"],
-    image: "/placeholder.svg?height=480&width=640",
-    imageAlt: "Sparkling clean windows on a home",
+      'Our window cleaning brings back your shine and allows you to appreciate the beauty of the outdoors. Crystal clear results inside and out.',
+    features: ['Streak-free finish', 'Interior & exterior', 'Residential & commercial'],
+    image: 'https://primary.jwwb.nl/public/g/j/h/temp-ixeezrybfvaorktfpdiz/img_4302-high.jpg?enable-io=true&enable=upscale&crop=1920%2C2307%2Cx0%2Cy127%2Csafe&width=600&height=720',
   },
   {
     icon: Building2,
-    title: "Commercial Washing",
-    tagline: "First Impressions Matter",
+    title: 'Commercial Washing',
     description:
-      "Commercial washing enhances business appeal with a professional clean. We work with storefronts, office buildings, warehouses, and parking lots — scheduling around your hours to minimize disruption.",
-    features: ["Storefront & signage cleaning", "Parking lot & sidewalk washing", "Fleet & equipment cleaning", "Flexible scheduling"],
-    image: "/placeholder.svg?height=480&width=640",
-    imageAlt: "Clean commercial building exterior",
+      'Commercial washing enhances business appeal with a professional clean. First impressions matter — let us make yours spotless.',
+    features: ['Storefronts & lots', 'Scheduled maintenance', 'Minimal disruption'],
+    image: 'https://primary.jwwb.nl/public/g/j/h/temp-ixeezrybfvaorktfpdiz/screenshot-2024-06-30-203446-high.png?enable-io=true&enable=upscale&crop=594%2C713%2Cx60%2Cy0%2Csafe&width=600&height=720',
   },
 ]
 
 export default function Services() {
   return (
     <section id="services" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Section header */}
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+          <p className="text-secondary text-sm font-semibold tracking-[0.2em] uppercase mb-3">
             What We Do
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance mb-4">
+          </p>
+          <h2
+            className="text-3xl md:text-5xl font-bold text-foreground text-balance"
+            style={{ fontFamily: 'var(--font-heading, var(--font-sans))' }}
+          >
             Our Services
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto text-pretty">
-            From single-family homes to large commercial properties, we deliver
-            thorough, professional results every time.
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto leading-relaxed text-pretty">
+            From homes to businesses, we have the equipment and expertise to make every surface shine.
           </p>
         </div>
 
         {/* Service cards */}
-        <div className="flex flex-col gap-12">
-          {services.map((service, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service) => {
             const Icon = service.icon
-            const isReversed = index % 2 !== 0
             return (
               <div
                 key={service.title}
-                className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 lg:gap-14 items-center rounded-2xl border border-border bg-card shadow-sm overflow-hidden`}
+                className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Image */}
-                <div className="w-full lg:w-1/2 aspect-[4/3] lg:aspect-auto lg:self-stretch relative overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={service.image}
-                    alt={service.imageAlt}
-                    className="w-full h-full object-cover"
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Decorative overlay */}
-                  <div className="absolute inset-0 bg-primary/10" aria-hidden="true" />
+                  <div className="absolute inset-0 bg-primary/30 group-hover:bg-primary/10 transition-colors" />
+                  {/* Icon badge */}
+                  <div className="absolute bottom-4 left-4 bg-secondary text-secondary-foreground p-3 rounded-xl shadow-md">
+                    <Icon size={22} />
+                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col gap-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/10 text-primary">
-                      <Icon className="w-5 h-5" />
-                    </span>
-                    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      {service.tagline}
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                <div className="p-6">
+                  <h3
+                    className="text-xl font-bold text-foreground mb-2"
+                    style={{ fontFamily: 'var(--font-heading, var(--font-sans))' }}
+                  >
                     {service.title}
                   </h3>
-
-                  <p className="text-muted-foreground leading-relaxed text-pretty">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-5">
                     {service.description}
                   </p>
-
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <ul className="space-y-1.5">
                     {service.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm text-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                      <li key={f} className="flex items-center gap-2 text-sm text-foreground/70">
+                        <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
                         {f}
                       </li>
                     ))}
                   </ul>
-
-                  <a
-                    href="#contact"
-                    className="mt-2 inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all"
-                  >
-                    Request a Quote
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
                 </div>
               </div>
             )

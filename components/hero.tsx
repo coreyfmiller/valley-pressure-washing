@@ -1,91 +1,66 @@
-import { ArrowRight, ShieldCheck, Leaf, Star } from "lucide-react"
-
-const badges = [
-  { icon: ShieldCheck, label: "Fully Insured" },
-  { icon: Leaf, label: "Eco-Friendly Solutions" },
-  { icon: Star, label: "5-Star Rated" },
-]
+import Image from 'next/image'
+import { ArrowDown } from 'lucide-react'
 
 export default function Hero() {
   return (
     <section
-      id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      aria-label="Hero section"
     >
-      {/* Background image placeholder */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-accent-blue"
-        aria-hidden="true"
-      >
-        {/* Simulated overlay texture */}
-        <div className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}
-        />
-      </div>
-
-      {/* Placeholder image representation */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <img
-          src="/placeholder.svg?height=1080&width=1920"
-          alt=""
-          className="w-full h-full object-cover opacity-20 mix-blend-overlay"
-        />
-      </div>
+      {/* Background image */}
+      <Image
+        src="/hero.png"
+        alt="Professional pressure washing technician at work"
+        fill
+        className="object-cover object-center"
+        priority
+        quality={90}
+      />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-primary/60" aria-hidden="true" />
+      <div className="absolute inset-0 bg-primary/60" />
+
+      {/* Subtle blue bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/80 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 text-center">
-        <span className="inline-block mb-5 px-4 py-1.5 rounded-full bg-white/15 text-white/90 text-xs font-semibold uppercase tracking-widest border border-white/20">
-          Greater Saint John Area
-        </span>
-
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight text-balance mb-6">
-          Professional Pressure<br />
-          <span className="text-sky-300">Washing Services</span>
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <p className="text-secondary text-sm font-semibold tracking-[0.2em] uppercase mb-4">
+          Quispamsis &amp; Greater Saint John Area
+        </p>
+        <h1
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight text-balance mb-6"
+          style={{ fontFamily: 'var(--font-heading, var(--font-sans))' }}
+        >
+          Restore Your Property's{' '}
+          <span className="text-secondary">True Shine</span>
         </h1>
-
-        <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-10 text-pretty">
-          We rejuvenate your home or business exterior with the highest quality pressure
-          washing in Quispamsis, New Brunswick. Powered by local entrepreneurs dedicated
-          to meticulous results.
+        <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 text-pretty">
+          Valley Pressure Washing rejuvenates your home or business exterior with the highest quality
+          pressure washing services — powered by passionate local entrepreneurs.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-primary font-bold text-sm hover:bg-white/90 transition-all shadow-xl"
+            className="bg-secondary text-secondary-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-accent transition-colors shadow-lg"
           >
             Get a Free Quote
-            <ArrowRight className="w-4 h-4" />
           </a>
           <a
             href="#services"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-transparent text-white font-semibold text-sm border-2 border-white/40 hover:border-white/80 transition-all"
+            className="border border-primary-foreground/40 text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-white/10 transition-colors"
           >
             Our Services
           </a>
         </div>
 
-        {/* Trust badges */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
-          {badges.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2.5 text-white/80">
-              <Icon className="w-4 h-4 text-sky-300 shrink-0" />
-              <span className="text-sm font-medium">{label}</span>
-            </div>
-          ))}
+        {/* Scroll cue */}
+        <div className="mt-16 flex flex-col items-center gap-2 text-primary-foreground/50">
+          <span className="text-xs tracking-widest uppercase">Scroll</span>
+          <ArrowDown size={16} className="animate-bounce" />
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-background to-transparent"
-        aria-hidden="true"
-      />
     </section>
   )
 }

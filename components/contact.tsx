@@ -1,185 +1,192 @@
-use client"
+'use client'
 
-import { useState } from "react"
-import { MapPin, Facebook, Instagram, Linkedin, Send, CheckCircle } from "lucide-react"
-
-const socialLinks = [
-  {
-    label: "Facebook",
-    href: "https://facebook.com/profile.php?id=61556412617635",
-    icon: Facebook,
-  },
-  {
-    label: "Instagram",
-    href: "https://instagram.com/valleypressurewashing2024/",
-    icon: Instagram,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/company/103378302/admin/feed/posts/?feedType=following",
-    icon: Linkedin,
-  },
-]
+import { useState } from 'react'
+import { MapPin, Facebook, Instagram, Linkedin, Send, CheckCircle } from 'lucide-react'
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-  const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [sent, setSent] = useState(false)
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // Simulate form submission
-    setSubmitted(true)
+    // Redirect to their Google Form
+    window.open(
+      'https://docs.google.com/forms/d/e/1FAIpQLScYp7btptBTD2UjdV9-lhH4X8xZ7q8p16G6iwFjXN4kJigvhw/viewform?usp=sf_link',
+      '_blank'
+    )
+    setSent(true)
+    setForm({ name: '', email: '', message: '' })
   }
 
   return (
-    <section id="contact" className="py-24 bg-muted">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="contact" className="py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
-            Get in Touch
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance mb-4">
+        <div className="text-center mb-16">
+          <p className="text-secondary text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+            Get In Touch
+          </p>
+          <h2
+            className="text-3xl md:text-5xl font-bold text-foreground text-balance"
+            style={{ fontFamily: 'var(--font-heading, var(--font-sans))' }}
+          >
             Ready to Clean Up?
           </h2>
-          <p className="text-muted-foreground max-w-md mx-auto text-pretty">
-            Contact us now for a free, no-obligation quote. We&apos;ll respond within one business day.
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-pretty">
+            Contact us today for a free, no-obligation quote. We serve Quispamsis, Rothesay, and the
+            greater Saint John area.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Info panel */}
           <div className="lg:col-span-2 flex flex-col gap-8">
-            <div className="bg-primary rounded-2xl p-8 text-white flex flex-col gap-6">
-              <h3 className="font-bold text-xl">Valley Pressure Washing</h3>
-
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 mt-0.5 text-sky-300 shrink-0" />
-                <div>
-                  <p className="font-semibold text-sm">Location</p>
-                  <p className="text-white/70 text-sm mt-0.5">72 Laura Drive, Quispamsis, NB E2E 6B4</p>
-                  <p className="text-white/70 text-sm">Canada (Greater Saint John Area)</p>
-                </div>
+            {/* Location */}
+            <div className="flex items-start gap-4">
+              <div className="bg-secondary/10 text-secondary p-3 rounded-xl shrink-0">
+                <MapPin size={22} />
               </div>
-
-              {/* Service Area Map */}
-              <div className="rounded-xl overflow-hidden aspect-video border border-white/20">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2836.711833130932!2d-65.94273202353723!3d45.43859737107779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5331e8c4e40e45%3A0xc3b59306b98e169b!2s72%20Laura%20Dr%2C%20Quispamsis%2C%20NB%20E2E%206B4%2C%20Canada!5e0!3m2!1sen!2sus!4v1709923420454!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Map showing 72 Laura Drive, Quispamsis, NB, Canada, E2E 6B4"
-                ></iframe>
-              </div>
-
-              {/* Social links */}
               <div>
-                <p className="text-sm font-semibold mb-3">Follow Us</p>
-                <div className="flex gap-3">
-                  {socialLinks.map(({ label, href, icon: Icon }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/15 hover:bg-white/25 transition-colors text-white"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  ))}
-                </div>
+                <h3 className="font-bold text-foreground mb-1">Location</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Quispamsis, New Brunswick
+                  <br />
+                  Greater Saint John Area
+                </p>
               </div>
+            </div>
+
+            {/* Social */}
+            <div>
+              <h3 className="font-bold text-foreground mb-4">Follow Us</h3>
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com/profile.php?id=61556412617635"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="bg-card border border-border p-3 rounded-xl text-muted-foreground hover:text-secondary hover:border-secondary transition-colors"
+                >
+                  <Facebook size={20} />
+                </a>
+                <a
+                  href="https://instagram.com/valleypressurewashing2024/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="bg-card border border-border p-3 rounded-xl text-muted-foreground hover:text-secondary hover:border-secondary transition-colors"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a
+                  href="https://linkedin.com/company/103378302"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="bg-card border border-border p-3 rounded-xl text-muted-foreground hover:text-secondary hover:border-secondary transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
+            </div>
+
+            {/* Quote CTA card */}
+            <div className="bg-primary text-primary-foreground rounded-2xl p-6 flex flex-col gap-3">
+              <h3 className="font-bold text-lg" style={{ fontFamily: 'var(--font-heading, var(--font-sans))' }}>
+                Free Quote Form
+              </h3>
+              <p className="text-primary-foreground/70 text-sm leading-relaxed">
+                Prefer to fill out our detailed quote request form? We&apos;ll get back to you within 24 hours.
+              </p>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScYp7btptBTD2UjdV9-lhH4X8xZ7q8p16G6iwFjXN4kJigvhw/viewform?usp=sf_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-accent transition-colors self-start"
+              >
+                Open Quote Form
+              </a>
             </div>
           </div>
 
-          {/* Form */}
-          <div className="lg:col-span-3 bg-card rounded-2xl border border-border p-8 shadow-sm">
-            {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center gap-4 text-center py-10">
-                <CheckCircle className="w-14 h-14 text-primary" />
-                <h3 className="text-xl font-bold text-foreground">Message Sent!</h3>
-                <p className="text-muted-foreground text-sm max-w-xs">
-                  Thanks for reaching out. We&apos;ll get back to you within one business day with your free quote.
+          {/* Contact form */}
+          <div className="lg:col-span-3 bg-card border border-border rounded-2xl p-8">
+            {sent ? (
+              <div className="flex flex-col items-center justify-center h-full gap-4 py-12 text-center">
+                <CheckCircle size={48} className="text-secondary" />
+                <h3 className="text-xl font-bold text-foreground">
+                  Thanks for reaching out!
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  We&apos;ve opened our quote form in a new tab. We&apos;ll be in touch shortly.
                 </p>
                 <button
-                  onClick={() => { setSubmitted(false); setForm({ name: "", email: "", message: "" }) }}
-                  className="mt-2 text-sm text-primary font-semibold underline underline-offset-4"
+                  onClick={() => setSent(false)}
+                  className="text-secondary text-sm hover:underline mt-2"
                 >
                   Send another message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                <h3 className="font-bold text-foreground text-lg mb-1">Send Us a Message</h3>
-
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-sm font-medium text-foreground">
-                    Your Name <span className="text-destructive">*</span>
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Jane Smith"
-                    className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition"
-                  />
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="name" className="text-sm font-medium text-foreground">
+                      Name <span className="text-secondary">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="John Smith"
+                      className="bg-background border border-input rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="text-sm font-medium text-foreground">
+                      Email <span className="text-secondary">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="john@example.com"
+                      className="bg-background border border-input rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition"
+                    />
+                  </div>
                 </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email" className="text-sm font-medium text-foreground">
-                    Email Address <span className="text-destructive">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="jane@email.com"
-                    className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-2">
                   <label htmlFor="message" className="text-sm font-medium text-foreground">
-                    Message <span className="text-destructive">*</span>
+                    Message <span className="text-secondary">*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    required
                     rows={5}
+                    required
                     value={form.message}
                     onChange={handleChange}
                     placeholder="Tell us about your property and what you need cleaned..."
-                    className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition resize-none"
+                    className="bg-background border border-input rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition resize-none"
                   />
                 </div>
-
                 <button
                   type="submit"
-                  className="mt-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all shadow-md"
+                  className="flex items-center justify-center gap-2 bg-secondary text-secondary-foreground px-8 py-3.5 rounded-full font-semibold hover:bg-accent transition-colors self-start"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send size={16} />
                   Send Message
                 </button>
-
-                <p className="text-xs text-muted-foreground">
-                  By submitting this form, you agree to be contacted regarding your pressure washing inquiry.
-                </p>
               </form>
             )}
           </div>
